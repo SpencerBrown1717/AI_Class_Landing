@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>!ngenuity AI</title>
+<meta name="description" content="Meet the Ingenuity AI. Amy, Charles, and the GSB Debrief Agent. Igniting growth, one conversation at a time." />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:       #0A1D38;   /* page background */
+    --navy-2:     #0E2748;   /* elevated card surface */
+    --navy-3:     #15335C;   /* hover surface */
+    --blue:       #27A6E0;   /* signature bright blue */
+    --blue-bright:#46B7EC;
+    --blue-soft:  #6FC2EC;   /* light blue, testimonial tone */
+    --white:      #FFFFFF;
+    --mist:       #AFC0D6;   /* muted body text on navy */
+    --faint:      #6E809B;   /* hairline labels */
+    --line:       rgba(255,255,255,.10);
+    --r: 22px;
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.20), 0 44px 80px -34px rgba(0,0,0,.65), 0 0 0 1px rgba(39,166,224,.25);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--navy);
+    color:var(--white);
+    font-family:'Hanken Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* atmospheric blue light bloom */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 560px at 84% -10%, rgba(39,166,224,.20), transparent 60%),
+      radial-gradient(760px 620px at -8% 14%, rgba(39,166,224,.10), transparent 55%);
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{ position:relative; z-index:1; }
+  .shell{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  /* ---------------- NAV ---------------- */
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:30px 0 0; }
+  .mark{
+    font-weight:800; font-size:26px; letter-spacing:-.03em; color:var(--white);
+    display:flex; align-items:baseline; gap:1px; text-decoration:none;
+  }
+  .mark .bang{ color:var(--blue); display:inline-block; transform:translateY(1px); animation:flick 5.5s ease-in-out infinite; }
+  @keyframes flick{ 0%,92%,100%{ opacity:1; transform:translateY(1px) scale(1); } 95%{ opacity:.5; transform:translateY(1px) scale(.92); } }
+  .nav-links{ display:flex; align-items:center; gap:34px; }
+  .nav-links a{ color:var(--mist); text-decoration:none; font-size:15px; font-weight:600; transition:color .3s; }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-cta{
+    border:1.5px solid var(--blue); color:var(--blue-bright); border-radius:100px;
+    padding:11px 22px; font-size:14px; font-weight:700;
+    transition:background .35s, color .35s;
+  }
+  .nav-cta:hover{ background:var(--blue); color:var(--white) !important; }
+
+  /* ---------------- HERO ---------------- */
+  header{ padding:104px 0 30px; }
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--blue-bright); margin-bottom:26px;
+    display:inline-flex; align-items:center; gap:11px;
+  }
+  .eyebrow::before{ content:""; width:30px; height:1.5px; background:var(--blue); display:inline-block; }
+
+  h1{
+    font-weight:800; letter-spacing:-.035em; line-height:.97;
+    font-size:clamp(46px, 8.4vw, 104px); max-width:14ch;
+  }
+  .uline{ position:relative; display:inline-block; }
+  .uline svg{
+    position:absolute; left:-2%; bottom:-.16em; width:104%; height:.32em; overflow:visible;
+  }
+  .uline svg path{
+    stroke:var(--blue); stroke-width:7; fill:none; stroke-linecap:round;
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:draw 1s cubic-bezier(.65,0,.35,1) .85s forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .lede{
+    margin-top:32px; max-width:54ch;
+    font-size:clamp(17px,1.55vw,20px); line-height:1.6; color:var(--mist); font-weight:400;
+  }
+
+  /* scrolling growth phrases, testimonial blue tone */
+  .marquee{
+    margin-top:56px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:18px 0; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  }
+  .marquee-track{ display:flex; white-space:nowrap; width:max-content; animation:scroll 34s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  .marquee-track span{ font-weight:500; font-size:19px; color:var(--blue-soft); padding:0 30px; }
+  .marquee-track span::after{ content:"●"; color:var(--blue); margin-left:30px; font-size:7px; vertical-align:middle; }
+  @keyframes scroll{ to{ transform:translateX(-50%); } }
+
+  /* ---------------- AGENTS ---------------- */
+  .agents-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin:92px 0 34px; flex-wrap:wrap; }
+  .agents-head h2{ font-weight:800; letter-spacing:-.03em; font-size:clamp(26px,3.4vw,38px); line-height:1.04; }
+  .agents-head p{ color:var(--mist); font-size:15px; max-width:42ch; line-height:1.55; }
+
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; padding-bottom:30px; }
+
+  .card{
+    position:relative; background:var(--navy-2); border:1px solid var(--line);
+    border-radius:var(--r); padding:32px 30px 28px;
+    display:flex; flex-direction:column; min-height:340px;
+    text-decoration:none; color:inherit; overflow:hidden;
+    transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), background .4s, border-color .4s;
+  }
+  .card::before{
+    content:""; position:absolute; left:0; top:0; height:3px; width:0;
+    background:linear-gradient(90deg,var(--blue),var(--blue-bright));
+    transition:width .55s cubic-bezier(.16,1,.3,1);
+  }
+  .card::after{
+    content:""; position:absolute; right:-50px; top:-50px; width:220px; height:220px;
+    background:radial-gradient(circle,rgba(39,166,224,.20),transparent 68%);
+    opacity:0; transition:opacity .55s; pointer-events:none;
+  }
+  .card:hover{ transform:translateY(-8px); background:var(--navy-3); border-color:rgba(39,166,224,.45); box-shadow:var(--shadow-lift); }
+  .card:hover::before{ width:100%; }
+  .card:hover::after{ opacity:1; }
+
+  .card-top{ display:flex; align-items:center; justify-content:space-between; }
+  .num{ font-weight:700; font-size:15px; letter-spacing:.18em; color:var(--faint); transition:color .45s; }
+  .card:hover .num{ color:var(--blue-bright); }
+  .glyph{
+    width:46px; height:46px; border-radius:13px; border:1px solid var(--line);
+    display:grid; place-items:center; color:var(--blue-soft);
+    transition:background .45s, color .45s, border-color .45s;
+  }
+  .card:hover .glyph{ background:var(--blue); color:var(--white); border-color:var(--blue); }
+  .glyph svg{ width:20px; height:20px; }
+
+  .card h3{ margin-top:auto; font-weight:800; letter-spacing:-.02em; font-size:31px; line-height:1.05; }
+  .role{ margin-top:9px; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--blue-bright); }
+  .desc{ margin-top:14px; color:var(--mist); font-size:14.5px; line-height:1.55; }
+
+  .launch{ margin-top:26px; display:inline-flex; align-items:center; gap:11px; font-weight:700; font-size:14px; color:var(--white); }
+  .launch .pill{ width:36px; height:36px; border-radius:100px; background:rgba(255,255,255,.07); display:grid; place-items:center; transition:background .4s; }
+  .launch .pill svg{ width:15px; height:15px; transition:transform .4s; }
+  .card:hover .launch .pill{ background:var(--blue); }
+  .card:hover .launch .pill svg{ transform:translateX(3px); }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{ margin-top:72px; border-top:1px solid var(--line); padding:34px 0 56px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  footer .mark{ font-size:20px; }
+  footer .meta{ display:flex; gap:28px; align-items:center; }
+  footer a.link{ color:var(--mist); text-decoration:none; font-size:14px; font-weight:500; transition:color .3s; }
+  footer a.link:hover{ color:var(--blue-bright); }
+  footer .copy{ color:var(--faint); font-size:13px; }
+
+  /* ---------------- ENTRANCE ---------------- */
+  .reveal{ opacity:0; transform:translateY(22px); animation:rise .9s cubic-bezier(.16,1,.3,1) forwards; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.55s}.d6{animation-delay:.66s}.d7{animation-delay:.77s}
+
+  @media (max-width:880px){
+    .nav-links{ gap:18px; }
+    .nav-links a:not(.nav-cta){ display:none; }
+    .grid{ grid-template-columns:1fr; }
+    .card{ min-height:auto; }
+    header{ padding:64px 0 20px; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+    .uline svg path{ stroke-dashoffset:0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="shell">
+
+  <!-- NAV -->
+  <nav>
+    <a class="mark" href="#"><span class="bang">!</span>ngenuity</a>
+    <div class="nav-links">
+      <a href="https://www.ingenuitycorp.com/about">About</a>
+      <a href="https://www.ingenuitycorp.com/services">Services</a>
+      <a class="nav-cta" href="mailto:inquiry@ingenuitycorp.com">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="eyebrow reveal d1">Igniting Growth</div>
+    <h1 class="reveal d2">Meet the
+      <span class="uline">Ingenuity<svg viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M4 10 C 64 4, 122 14, 184 7 S 270 5, 296 10"/></svg></span>
+      AI.
+    </h1>
+    <p class="lede reveal d3">
+      Three agents built on a decade of growth research from Harvard and Stanford GSB,
+      ready to strategize, build, and debrief alongside your team.
+    </p>
+
+    <div class="marquee reveal d4">
+      <div class="marquee-track">
+        <span>Drive Profitable Growth</span><span>Build New Businesses</span><span>Scale New Ventures</span><span>Deliver Results at Scale</span><span>Accelerate Growth</span><span>Organizational Agility</span>
+        <span>Drive Profitable Growth</span><span>Build New Businesses</span><span>Scale New Ventures</span><span>Deliver Results at Scale</span><span>Accelerate Growth</span><span>Organizational Agility</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- AGENTS -->
+  <section>
+    <div class="agents-head">
+      <h2 class="reveal d5">Choose your agent.</h2>
+      <p class="reveal d5">Each one is built for a single job. Pick the conversation you need and start in seconds.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- AMY -->
+      <a class="card reveal d5" href="agent.html?a=amy">
+        <div class="card-top">
+          <div class="num">01</div>
+          <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
+        </div>
+        <h3>Amy AI</h3>
+        <div class="role">Growth Strategist</div>
+        <p class="desc">Pressure tests strategy, finds new growth engines, and sharpens your go to market.</p>
+        <span class="launch">Launch Amy
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+        </span>
+      </a>
+
+      <!-- CHARLES -->
+      <a class="card reveal d6" href="agent.html?a=charles">
+        <div class="card-top">
+          <div class="num">02</div>
+          <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6M3 21h18"/></svg></div>
+        </div>
+        <h3>Charles AI</h3>
+        <div class="role">Venture Builder</div>
+        <p class="desc">Turns ambition into ventures: business models, scaling plans, and the path to results.</p>
+        <span class="launch">Launch Charles
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+        </span>
+      </a>
+
+      <!-- GSB DEBRIEF -->
+      <a class="card reveal d7" href="agent.html?a=gsb">
+        <div class="card-top">
+          <div class="num">03</div>
+          <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        </div>
+        <h3>GSB Debrief</h3>
+        <div class="role">Debrief Agent</div>
+        <p class="desc">Captures every session and turns its insights, decisions, and next moves into momentum you can act on.</p>
+        <span class="launch">Start a debrief
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="mark" href="#"><span class="bang">!</span>ngenuity</a>
+    <div class="meta">
+      <a class="link" href="https://www.ingenuitycorp.com/about">About</a>
+      <a class="link" href="https://www.ingenuitycorp.com/services">Services</a>
+      <a class="link" href="mailto:inquiry@ingenuitycorp.com">Contact</a>
+    </div>
+    <div class="copy">© 2026 Ingenuity. Igniting growth in business.</div>
+  </footer>
+
+</div>
+</div>
+</body>
+</html>
