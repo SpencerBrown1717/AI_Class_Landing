@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>!ngenuity AI</title>
-<meta name="description" content="Meet the Ingenuity AI. Amy, Charles, and Stan, the GSB Debrief Agent. Igniting growth, one conversation at a time." />
+<meta name="description" content="Meet the Ingenuity AI. Amy, Charles, and the GSB Debrief Agent. Igniting growth, one conversation at a time." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +63,8 @@
   .nav-links{ display:flex; align-items:center; gap:34px; }
   .nav-links a{ color:var(--mist); text-decoration:none; font-size:15px; font-weight:600; transition:color .3s; }
   .nav-links a:hover{ color:var(--white); }
+  .nav-links .studio{ color:var(--blue-bright); border:1px solid rgba(39,166,224,.35); background:rgba(39,166,224,.07); border-radius:100px; padding:9px 16px; font-size:14px; transition:.3s; }
+  .nav-links .studio:hover{ background:rgba(39,166,224,.16); color:#fff; }
   .nav-cta{
     border:1.5px solid var(--blue); color:var(--blue-bright); border-radius:100px;
     padding:11px 22px; font-size:14px; font-weight:700;
@@ -163,6 +165,50 @@
   .card:hover .launch .pill{ background:var(--blue); border-color:var(--blue); }
   .card:hover .launch .pill svg{ transform:translateX(3px); }
 
+  /* ---------------- JUMP IN ---------------- */
+  .jump{ margin-top:22px; }
+  .jump-head{ margin-bottom:24px; }
+  .jump-head h2{ font-weight:800; letter-spacing:-.03em; font-size:clamp(24px,3vw,34px); line-height:1.05; }
+
+  .jump-panel{
+    display:grid; grid-template-columns:1fr 1fr;
+    border:1px solid var(--line); border-radius:var(--r); overflow:hidden;
+    background:linear-gradient(180deg,#11294A,#0C2240);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 20px 44px -32px rgba(0,0,0,.7);
+  }
+
+  .jump-col{ padding:26px 24px 18px; }
+  .jump-col + .jump-col{ border-left:1px solid var(--line); }
+
+  .jump-agent{ display:flex; align-items:center; gap:13px; padding-bottom:18px; margin-bottom:6px; border-bottom:1px solid var(--line); }
+  .jump-glyph{
+    width:42px; height:42px; flex:none; border-radius:12px; background:#fff;
+    display:grid; place-items:center; color:#0A1D38;
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.55);
+  }
+  .jump-glyph svg{ width:20px; height:20px; }
+  .jump-name{ font-weight:800; font-size:21px; letter-spacing:-.02em; line-height:1; }
+  .jump-role{ margin-top:6px; font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--blue-bright); }
+
+  .jump-link{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    text-decoration:none; color:var(--white);
+    padding:15px 12px 15px 8px; border-radius:12px;
+    font-weight:600; font-size:15.5px; letter-spacing:-.01em;
+    transition:background .3s, padding .4s cubic-bezier(.16,1,.3,1);
+  }
+  .jump-link .jl-arrow{
+    width:32px; height:32px; flex:none; border-radius:100px;
+    background:rgba(255,255,255,.08); border:1px solid var(--line);
+    display:grid; place-items:center; transition:background .3s, border-color .3s;
+  }
+  .jump-link .jl-arrow svg{ width:14px; height:14px; transition:transform .35s; }
+  .jump-link:hover{ background:rgba(39,166,224,.09); padding-left:14px; }
+  .jump-link:hover .jl-arrow{ background:var(--blue); border-color:var(--blue); }
+  .jump-link:hover .jl-arrow svg{ transform:translateX(3px); }
+  .jump-link.muted{ color:var(--mist); }
+  .jump-link.muted:hover{ color:var(--white); }
+
   /* ---------------- FOOTER ---------------- */
   footer{ margin-top:72px; border-top:1px solid var(--line); padding:34px 0 56px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
   footer .mark{ font-size:20px; }
@@ -174,14 +220,25 @@
   /* ---------------- ENTRANCE ---------------- */
   .reveal{ opacity:0; transform:translateY(22px); animation:rise .9s cubic-bezier(.16,1,.3,1) forwards; }
   @keyframes rise{ to{ opacity:1; transform:none; } }
-  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.55s}.d6{animation-delay:.66s}.d7{animation-delay:.77s}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.55s}.d6{animation-delay:.66s}.d7{animation-delay:.77s}.d8{animation-delay:.88s}
 
   @media (max-width:880px){
-    .nav-links{ gap:18px; }
-    .nav-links a:not(.nav-cta){ display:none; }
+    .nav-links{ gap:12px; }
+    .nav-links a:not(.nav-cta):not(.studio){ display:none; }
     .grid{ grid-template-columns:1fr; }
     .card{ min-height:auto; }
     header{ padding:64px 0 20px; }
+    .jump-panel{ grid-template-columns:1fr; }
+    .jump-col + .jump-col{ border-left:none; border-top:1px solid var(--line); }
+  }
+  @media (max-width:560px){
+    .shell{ padding:0 20px; }
+    header{ padding:48px 0 16px; }
+    .nav-cta{ padding:9px 16px; }
+    .card{ padding:28px 24px; }
+    .agents-head{ margin:64px 0 26px; }
+    .jump-col{ padding:22px 18px 14px; }
+    footer{ gap:14px; }
   }
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; }
@@ -198,6 +255,7 @@
   <nav>
     <a class="mark" href="#"><span class="bang">!</span>ngenuity</a>
     <div class="nav-links">
+      <a class="studio" href="creator.html">Studio</a>
       <a href="https://www.ingenuitycorp.com/about">About</a>
       <a href="https://www.ingenuitycorp.com/services">Services</a>
       <a class="nav-cta" href="mailto:inquiry@ingenuitycorp.com">Contact Us</a>
@@ -234,7 +292,7 @@
     <div class="grid">
 
       <!-- AMY -->
-      <a class="card reveal d5" href="https://spencerbrown1717.github.io/AI_Class_Amy_01/">
+      <a class="card reveal d5" href="agent.html?a=amy">
         <div class="card-top">
           <div class="num">01</div>
           <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
@@ -243,12 +301,12 @@
         <div class="role">Growth Strategist</div>
         <p class="desc">Pressure tests strategy, finds new growth engines, and sharpens your go to market.</p>
         <span class="launch">Launch Amy
-          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
       <!-- CHARLES -->
-      <a class="card reveal d6" href="https://spencerbrown1717.github.io/AI_Class_Charles_01/">
+      <a class="card reveal d6" href="agent.html?a=charles">
         <div class="card-top">
           <div class="num">02</div>
           <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6M3 21h18"/></svg></div>
@@ -257,23 +315,73 @@
         <div class="role">Venture Builder</div>
         <p class="desc">Turns ambition into ventures: business models, scaling plans, and the path to results.</p>
         <span class="launch">Launch Charles
-          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
-      <!-- STAN / GSB DEBRIEF -->
-      <a class="card reveal d7" href="https://spencerbrown1717.github.io/AI_Class_Stan_01/">
+      <!-- GSB DEBRIEF -->
+      <a class="card reveal d7" href="agent.html?a=gsb">
         <div class="card-top">
           <div class="num">03</div>
           <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         </div>
-        <h3>Stan AI</h3>
-        <div class="role">GSB Debrief Agent</div>
+        <h3>GSB Debrief</h3>
+        <div class="role">Debrief Agent</div>
         <p class="desc">Captures every session and turns its insights, decisions, and next moves into momentum you can act on.</p>
         <span class="launch">Start a debrief
-          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6 6 6"/></svg></span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
+
+    </div>
+  </section>
+
+  <!-- JUMP IN -->
+  <section class="jump">
+    <div class="jump-head reveal d7">
+      <div class="eyebrow">Get Started</div>
+      <h2>Or jump straight in.</h2>
+    </div>
+
+    <div class="jump-panel reveal d8">
+
+      <!-- AMY -->
+      <div class="jump-col">
+        <div class="jump-agent">
+          <span class="jump-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
+          <div>
+            <div class="jump-name">Amy</div>
+            <div class="jump-role">Growth Strategist</div>
+          </div>
+        </div>
+        <a class="jump-link" href="https://spencerbrown1717.github.io/AI_class_Talk_with_Amy_01/">
+          <span>Talk with Amy</span>
+          <span class="jl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="jump-link muted" href="https://spencerbrown1717.github.io/AI_Class_Creator_Amy_01/">
+          <span>Build a class</span>
+          <span class="jl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+
+      <!-- CHARLES -->
+      <div class="jump-col">
+        <div class="jump-agent">
+          <span class="jump-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6M3 21h18"/></svg></span>
+          <div>
+            <div class="jump-name">Charles</div>
+            <div class="jump-role">Venture Builder</div>
+          </div>
+        </div>
+        <a class="jump-link" href="https://spencerbrown1717.github.io/AI_class_Talk_with_Charels_01/">
+          <span>Talk with Charles</span>
+          <span class="jl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="jump-link muted" href="https://spencerbrown1717.github.io/AI_class_Creator_Charles_01/">
+          <span>Build a class</span>
+          <span class="jl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
 
     </div>
   </section>
